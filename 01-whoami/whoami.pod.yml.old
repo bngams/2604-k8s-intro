@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: whoami
+  # penser au namespace
+  namespace: whoami
+  # pattern de labels (futurs selecteurs...)
+  labels:
+    # name: whoami vs app.kubernetes.io/name: whoami
+    # pattern de labels recommandée par kubernetes
+    app.kubernetes.io/name: whoami
+    # labels personnalisés
+    # strategie de versioning, ciblage
+    version: "1.0"
+    group: backend
+spec:
+  containers:
+  - name: whoami
+    image: traefik/whoami
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "250m"
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 80

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: whoami
+  namespace: whoami
+spec:
+  selector:
+    app.kubernetes.io/name: whoami
+  ports:
+  - port: 80 # port d'exposition du service
+    protocol: TCP
+    targetPort: 80 # port du container ciblé
